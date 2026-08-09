@@ -25,7 +25,16 @@ python -m platform.memory
 python -m platform.skills
 python -m platform.prompts
 python -m platform.hitl
+```
+
+Relay adapters (in-process policy):
+
+```bash
 python -m relay.evaluate
+python -m relay.langchain
+python -m relay.agno
+python -m relay.openai_agents
+# full list: python/relay/README.md
 ```
 
 Framework + MCP (extra deps):
@@ -45,8 +54,10 @@ npm install
 cp .env.example .env   # set EXEMPLAR_API_KEY
 
 npx tsx relay/evaluate.ts
-npx tsx ingest/openai.ts
 npx tsx relay/openai-agents.ts
+npx tsx relay/claude-agent.ts
+npx tsx relay/mastra.ts
+npx tsx ingest/openai.ts
 ```
 
 ## Catalog
@@ -62,7 +73,11 @@ npx tsx relay/openai-agents.ts
 | Google ADK + MCP | `frameworks/google_adk_mcp.py` | — | same |
 | Claude Agent + MCP | `frameworks/claude_agent_mcp.py` | `ingest/claude-agent.ts` | same |
 | Relay evaluate | `relay/evaluate.py` | `relay/evaluate.ts` | [SDK Relay](https://docs.exemplar.dev/marshal/sdk/client-usage) |
-| Relay Agno / LangChain / Claude | `relay/*.py` | `relay/*.ts` | same |
+| Relay LangChain / LangGraph | `relay/langchain.py` · `relay/langgraph.py` | `relay/langchain.ts` | same |
+| Relay Agno / ADK | `relay/agno.py` · `relay/adk.py` | — | same |
+| Relay Claude / OpenAI Agents | `relay/claude_sdk.py` · `relay/openai_agents.py` | `relay/claude-agent.ts` · `relay/openai-agents.ts` | same |
+| Relay Pydantic AI / CrewAI / SK | `relay/pydantic_ai.py` · `crewai.py` · `semantic_kernel.py` | — | same |
+| Relay Mastra | — | `relay/mastra.ts` | same |
 | Session ingest | — | `ingest/*.ts` | [Live examples](https://docs.exemplar.dev/marshal/sdk/live-examples) |
 
 Maintainer copies of the full SDK example matrices still live under each SDK repo (`examples/live`, `examples/relay`, `examples/ingest`). This repo is the **customer-facing** samples home linked from docs and exemplar-skills.

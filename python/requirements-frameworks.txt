@@ -1,4 +1,4 @@
 -r requirements.txt
-exemplar-harness-sdk[langchain,agno,google-adk,claude-agent]>=0.2.21
+exemplar-harness-sdk[langchain,langgraph,agno,google-adk,claude-agent,pydantic-ai,crewai,semantic-kernel]>=0.2.21
 langchain-google-genai>=2.0
 langgraph>=0.2
