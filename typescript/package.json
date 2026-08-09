@@ -1,0 +1,38 @@
+{
+  "name": "exemplar-platform-samples-typescript",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Live TypeScript samples for Exemplar Marshal SDK",
+  "scripts": {
+    "relay:evaluate": "npx tsx relay/evaluate.ts",
+    "relay:openai-agents": "npx tsx relay/openai-agents.ts",
+    "relay:claude-agent": "npx tsx relay/claude-agent.ts",
+    "relay:mastra": "npx tsx relay/mastra.ts",
+    "relay:langchain": "npx tsx relay/langchain.ts",
+    "ingest:openai": "npx tsx ingest/openai.ts",
+    "ingest:anthropic": "npx tsx ingest/anthropic.ts",
+    "ingest:vercel-ai": "npx tsx ingest/vercel-ai.ts"
+  },
+  "dependencies": {
+    "@exemplar-dev/exemplar-harness-typescript-sdk": "^0.4.2",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "optionalDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "*",
+    "@anthropic-ai/sdk": "*",
+    "@google/genai": "*",
+    "@langchain/core": "*",
+    "@mastra/core": "*",
+    "@openai/agents": "*",
+    "ai": "*",
+    "openai": "*"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
