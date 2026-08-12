@@ -34,6 +34,8 @@ Live wrap:
   const traced = wrapOpenAIAgentsRun(h, run, {
     sessionId,
     sourceApp: "${SOURCE_APP}",
+    autoJudgeRun: true,
+    autoSessionEval: true,
   });
   const agent = new Agent({ name: "Assistant", instructions: "Be concise." });
   await traced(agent, "Write a haiku about recursion.");

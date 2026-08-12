@@ -35,7 +35,11 @@ async def main() -> None:
             tools=[mcp],
             post_hooks=[
                 harness_agno_post_hook(
-                    h, session_id=sid, agent_id="agno-mcp-sample"
+                    h,
+                    session_id=sid,
+                    agent_id="agno-mcp-sample",
+                    auto_judge_run=True,
+                    auto_session_eval=True,
                 )
             ],
             instructions=["Use MCP tools when helpful. Be concise."],

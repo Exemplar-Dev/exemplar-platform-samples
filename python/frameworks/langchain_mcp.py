@@ -44,7 +44,11 @@ async def main() -> None:
     from exemplar_harness.integrations.langchain import make_langchain_callback_handler
 
     handler = make_langchain_callback_handler(
-        h, session_id=sid, chain_name="platform-samples"
+        h,
+        session_id=sid,
+        chain_name="platform-samples",
+        auto_judge_run=True,
+        auto_session_eval=True,
     )
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", callbacks=[handler])
     agent = create_react_agent(llm, mcp_tools)
