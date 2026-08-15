@@ -1,0 +1,5 @@
+google-adk[mcp]
+voyageai
+chromadb
+exemplar-harness-sdk
+tradingview-mcp-server
