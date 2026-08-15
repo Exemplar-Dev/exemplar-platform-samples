@@ -1,14 +1,33 @@
+import importlib.util
 import os
+import shutil
+import sys
 
-MCP_VENV_PY = os.getenv(
-    "MCP_VENV_PY",
-    r"D:\tradingview-mcp\.venv\Scripts\python.exe"
-)
 
-MCP_SERVER = os.getenv(
-    "MCP_SERVER_PATH",
-    r"D:\tradingview-mcp\src\tradingview_mcp\server.py"
-)
+def _resolve_mcp_command() -> str:
+    """Resolve the Python executable that should launch the MCP server."""
+    env = os.getenv("MCP_VENV_PY")
+    if env:
+        return env
+    return sys.executable
+
+
+def _resolve_mcp_server() -> str:
+    """Resolve the path to the tradingview_mcp server.py module."""
+    env = os.getenv("MCP_SERVER_PATH")
+    if env:
+        return env
+    spec = importlib.util.find_spec("tradingview_mcp.server")
+    if spec and spec.origin:
+        return spec.origin
+    raise RuntimeError(
+        "Cannot find tradingview_mcp.server. "
+        "Install it: pip install tradingview-mcp-server"
+    )
+
+
+MCP_VENV_PY = _resolve_mcp_command()
+MCP_SERVER = _resolve_mcp_server()
 
 GLM_MODEL = os.getenv(
     "GLM_MODEL",
@@ -17,3 +36,4 @@ GLM_MODEL = os.getenv(
 
 DEFAULT_TIMEOUT = int(os.getenv("MCP_TIMEOUT", "30"))
 CLI_OUTPUT_LIMIT = 1500
+
